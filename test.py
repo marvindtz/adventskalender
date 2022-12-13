@@ -27,33 +27,36 @@ def paintSinCosTan():
 
 
 def paintKreisBogen(radius):
-    #t.reset()
+    
+    t.up() # nicht malen
     t.setpos(0,0)
     t.pencolor("green")
-    t.dot(5)
+    t.dot(5) # mittelpunkt
     t.setpos(0,-radius*100)
-    t.down()
+    t.down() #wieder malen
    
+    #berechnen vom umfang und alpha für eine Bogenlänge von 3
     bogenlaenge=3
     umfang= 2*radius*math.pi
-    t.pencolor("red")
     grad = 360/umfang*bogenlaenge
-    print(t.pos())
-    print(turtle.heading())
-    t.circle(radius*100,360)
+
+    t.pencolor("red")
+    t.circle(radius*100,360) # kompletter kreis 
     t.pencolor("blue")
-    t.circle(radius*100,grad)
-    t.up()
-    t.circle(radius*100,360-grad)
-
-
+    t.circle(radius*100,grad) # teil kreis
+    
+    t.up() # nicht malen
+    t.circle(radius*100,360-grad) # kreis fertig malen mait turtle wieder beim nächsten kreis von vorne beginnt
 
 
 t=turtle.Pen()
 t.speed(5)
 turtle.bgcolor("black")
+
 paintKreisBogen(1)
+
 paintKreisBogen(2)
+
 paintKreisBogen(4)
 
-time.sleep(10)
+input("Press key to exit")
